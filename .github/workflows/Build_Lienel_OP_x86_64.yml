@@ -71,9 +71,9 @@ jobs:
         cp feeds.conf.default feeds.conf -f
         echo 'src-git custom https://github.com/k-szuster/luci-access-control-package.git' >> feeds.conf
         echo feeds.conf
-        echo 'start feeds update'
+        echo 'start feeds update custom'
+        ./scripts/feeds update custom 
         ./scripts/feeds update -a
-        ./scripts/feeds install -a
         ./scripts/feeds install -a
 
     - name: Configuration Customization - Build_x86_64
@@ -100,5 +100,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: OpenWrt
+        name: Lienol OpenWrt
         path: openwrt/bin
