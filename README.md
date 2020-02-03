@@ -1,4 +1,6 @@
-这个目前是给予lede
+这个项目是自动编译各种lede 。
+thanks the code from esir https://github.com/esirplayground/AutoBuild-OpenWrt
+and andp3terx https://github.com/P3TERX/Actions-OpenWrt/
 # AutoBuild-OpenWrt
 
 Build OpenWrt firware [Lean's OpenWrt](https://github.com/coolsnowwolf/lede) using GitHub Actions  
