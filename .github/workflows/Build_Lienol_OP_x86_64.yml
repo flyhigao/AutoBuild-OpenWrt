@@ -69,7 +69,7 @@ jobs:
       working-directory: ./openwrt
       run: |
         cp feeds.conf.default feeds.conf
-        echo 'src-git custom https://github.com/k-szuster/luci-access-control-package.git' >> feeds.conf
+        echo -e '\nsrc-git custom https://github.com/k-szuster/luci-access-control-package.git' >> feeds.conf
         cat feeds.conf
         echo 'start feeds update custom'
         ./scripts/feeds update custom 
