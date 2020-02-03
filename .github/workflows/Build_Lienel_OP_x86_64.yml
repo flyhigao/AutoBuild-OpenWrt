@@ -12,8 +12,8 @@ on:
     types: [published]
 
   push:
-    branches: 
-      - master
+  #  branches: 
+  #    - master
     tags:
       - v1.*
 
