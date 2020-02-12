@@ -2,10 +2,9 @@
 # Description: Build OpenWrt using GitHub Actions
 # Lisence: MIT
 # Author: eSirPlayground and flyhi
-# Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 
-name: Build_x86_64
+name: Build_Lienol_OP_x86_64
 
 on: 
   release:
