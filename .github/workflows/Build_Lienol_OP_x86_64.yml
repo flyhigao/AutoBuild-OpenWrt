@@ -75,7 +75,7 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         # Add other app
-        git clone https://github.com/ozon/luci-app-ttyd.git package/feeds/luci-app-ttyd
+        # git clone https://github.com/ozon/luci-app-ttyd.git package/feeds/luci-app-ttyd
 
     - name: Configuration Customization - Build_x86_64
       env:
