@@ -5,7 +5,7 @@
 # Author: P3TERX
 # Blog: https://p3terx.com
 #=================================================
-name: X64-1907
+name: X64-Master
 
 on:
   schedule:
@@ -13,9 +13,7 @@ on:
 #  push:
 #    branches: 
 #      - master
-  watch:
-    types: [started]
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,7 +34,7 @@ jobs:
     - name: Clone source code
       env: 
         REPO_URL: https://github.com/Lienol/openwrt
-        REPO_BRANCH: dev-19.07
+        REPO_BRANCH: dev-master
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -48,34 +46,39 @@ jobs:
       run: |
           cd openwrt
           rm -f .config
-          cp ../x64-1907 .config
+          cp ../lienol_ow_x86_64.config .config
           
     - name: Make Defconfig
       run: |
           cd openwrt
           make defconfig
+
     - name: Make download
       run: |
           cd openwrt
           make download -j8
           find dl -size -1024c -exec ls -l {} \;
           find dl -size -1024c -exec rm -f {} \;
+
     - name: Multi-thread compile
       run: |
           cd openwrt
           echo -e "$(nproc) thread build."
           make -j$(nproc) V=s
+
     - name: Single-thread compile
       if: failure()
       run: |
           cd openwrt
           make -j1 V=s
+
     - name: Assemble artifact
       run: |
           rm -rf ./artifact/
           mkdir -p ./artifact/
           find openwrt/bin/targets/ -name "*sysupgrade*bin*" | xargs -i mv -f {} ./artifact/
           find openwrt/bin/targets/ -name "*combined*img*" | xargs -i mv -f {} ./artifact/
+
     - name: Upload artifact
       uses: actions/upload-artifact@master
       with:
