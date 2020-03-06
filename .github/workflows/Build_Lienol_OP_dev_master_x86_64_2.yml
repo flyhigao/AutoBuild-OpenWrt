@@ -48,7 +48,7 @@ jobs:
       run: |
           cd openwrt
           rm -f .config
-          cp ../lienol_ow_x86_64.config .config
+          cp ../lienol_master .config
           
     - name: Make Defconfig
       run: |
