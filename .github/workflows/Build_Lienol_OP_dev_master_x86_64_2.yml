@@ -48,7 +48,7 @@ jobs:
       run: |
           cd openwrt
           rm -f .config
-          cp ../lienol_master .config
+          cp ../lienol_master_ori .config
           
     - name: Make Defconfig
       run: |
@@ -66,7 +66,7 @@ jobs:
       run: |
           cd openwrt
           echo -e "$(nproc) thread build."
-          make -j$(nproc) V=s
+          make -j1 V=s
 
     - name: Single-thread compile
       if: failure()
