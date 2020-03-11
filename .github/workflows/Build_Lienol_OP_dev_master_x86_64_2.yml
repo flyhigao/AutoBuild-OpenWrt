@@ -8,8 +8,8 @@
 name: X64-Master
 
 on:
-  schedule:
-    - cron: 0 20 * * *
+#  schedule:
+#    - cron: 0 20 * * *
 #  push:
 #    branches: 
 #      - master
