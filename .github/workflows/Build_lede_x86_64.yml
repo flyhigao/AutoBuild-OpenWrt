@@ -75,6 +75,8 @@ jobs:
         ./scripts/feeds install -a
         # Add other app
         # git clone https://github.com/ozon/luci-app-ttyd.git package/feeds/luci-app-ttyd
+        # add namesilo for ddns
+        git clone https://github.com/icksky/ddns-scripts_namesilo.git package/ddns-scripts_namesilo
     - name: Configuration Customization - Build_x86_64
       env:
         CONFIG_FILE: 'lienol_ow_x86_64.config'
