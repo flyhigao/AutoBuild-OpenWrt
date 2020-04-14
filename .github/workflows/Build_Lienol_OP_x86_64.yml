@@ -76,7 +76,19 @@ jobs:
         ./scripts/feeds install -a
         # Add other app
         # git clone https://github.com/ozon/luci-app-ttyd.git package/feeds/luci-app-ttyd
-
+    
+    - name: add docker support
+      working-directory: ./openwrt
+      run: |
+        mkdir -p package/luci-lib-docker && \
+        wget https://raw.githubusercontent.com/lisaac/luci-lib-docker/master/Makefile -O package/luci-lib-docker/Makefile
+        mkdir -p package/luci-app-dockerman && \
+        wget https://raw.githubusercontent.com/lisaac/luci-app-dockerman/master/Makefile -O package/luci-app-dockerman/Makefile
+        #compile package only
+        make package/luci-lib-jsonc/compile V=99
+        make package/luci-lib-docker/compile v=99
+        make package/luci-app-dockerman/compile v=99
+        
     - name: Configuration Customization - Build_x86_64
       env:
         CONFIG_FILE: 'lienol_ow_x86_64.config'
