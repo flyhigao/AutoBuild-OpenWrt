@@ -92,6 +92,16 @@ jobs:
         #make package/luci-lib-docker/compile v=99
         #make package/luci-app-dockerman/compile v=99
         
+    - name: add openclash support
+      working-directory: ./openwrt
+      run: |     
+        git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+        # 编译 po2lmo (如果有po2lmo可跳过)
+        pushd package/luci-app-openclash/luci-app-openclash/tools/po2lmo
+        make && sudo make install
+        popd
+        
+        
     - name: Configuration Customization - Build_x86_64
       env:
         CONFIG_FILE: 'lienol_ow_x86_64.config'
