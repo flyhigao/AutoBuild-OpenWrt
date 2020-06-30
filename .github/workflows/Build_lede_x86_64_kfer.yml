@@ -61,21 +61,25 @@ jobs:
           df -h
 
       - name: Update feeds
+        working-directory: /src/openwrt
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
       - name: Generate configuration file
+        working-directory: /src/openwrt
         run: |
           cp ./makeconfig.d/x86_64.config ./.config
           make defconfig
 
       - name: Make download
+        working-directory: /src/openwrt
         run: |
           make download -j8
           find ./dl/ -size -1024c -exec rm -f {} \;
 
       - name: Compile firmware
+        working-directory: /src/openwrt
         run: |
           make -j$(nproc) || make -j1 V=s
           echo "======================="
@@ -87,9 +91,11 @@ jobs:
           du -h /mnt/openwrt/ --max-depth=1
 
       - name: Prepare artifact
+        working-directory: /src/openwrt
         run: find ./bin/targets/ -type d -name "packages" | xargs rm -rf {}
 
       - name: Upload artifact
+        working-directory: /src/openwrt
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt_firmware
