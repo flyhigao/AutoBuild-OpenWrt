@@ -43,7 +43,8 @@ jobs:
           sudo -E apt-get clean
           
           ##git clone the kfermercer code to current dir --flyhi
-          mkdir /src/openwrt -p
+          sudo mkdir /src/openwrt -p
+          sudo chmod 777 /src/openwrt 
           cd /src/openwrt/
           git clone --depth 1 https://github.com/KFERMercer/OpenWrt.git -b master .
 
