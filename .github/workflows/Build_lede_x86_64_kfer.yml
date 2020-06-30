@@ -95,8 +95,7 @@ jobs:
         run: find ./bin/targets/ -type d -name "packages" | xargs rm -rf {}
 
       - name: Upload artifact
-        working-directory: /src/openwrt
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt_firmware
-          path: ./bin/targets/
+          path: /src/openwrt/bin/targets/
