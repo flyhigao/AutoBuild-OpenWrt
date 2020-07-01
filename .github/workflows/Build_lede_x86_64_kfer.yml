@@ -65,12 +65,25 @@ jobs:
         run: |
           ./scripts/feeds update -a
           ./scripts/feeds install -a
+          
+          #install openclash
+          git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
+          pushd package/luci-app-openclash/luci-app-openclash/tools/po2lmo
+          make && sudo make install
+          popd
 
       - name: Generate configuration file
-        working-directory: /src/openwrt
+        env:
+          CONFIG_FILE: 'lede_x86_64_kfer.config'
+          CUSTOM_FILE: 'customize.sh'
         run: |
-          cp ./makeconfig.d/x86_64.config ./.config
-          make defconfig
+          #cp ./makeconfig.d/x86_64.config ./.config
+          #make defconfig
+          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE /src/openwrt/.config
+          [ -e $CUSTOM_FILE ] && mv $CUSTOM_FILE /src/
+          
+          chmod +x /src/customize.sh && /src/customize.sh
+          cd /src/openwrt && make defconfig
 
       - name: Make download
         working-directory: /src/openwrt
