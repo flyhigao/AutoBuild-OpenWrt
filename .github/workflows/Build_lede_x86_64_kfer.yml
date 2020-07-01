@@ -34,20 +34,7 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          /*
-          sudo mkdir /src/openwrt/package -p
-          sudo chmod 777 /src/openwrt/package
-          sudo chmod 777 /src/openwrt/
-          sudo chmod 777 /src
-          cd /src/openwrt/
-          #install openclash
-          git clone https://github.com/vernesong/OpenClash.git -b master package/luci-app-openclash
-          ls package -al
-          ls package/luci-app-openclash -al
-          ls package/luci-app-openclash/luci-app-openclash/tools/po2lmo -al
-          pushd package/luci-app-openclash/luci-app-openclash/tools/po2lmo
-          sudo rm /src/openwrt -rf
-          */
+
           docker rmi `docker images -q`
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
