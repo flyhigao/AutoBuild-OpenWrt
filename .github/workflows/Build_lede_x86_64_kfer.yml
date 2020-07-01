@@ -36,6 +36,7 @@ jobs:
         run: |
           
           sudo mkdir /src/openwrt/package -p
+          sudo chmod 777 /src/openwrt/package
           sudo chmod 777 /src/openwrt/
           sudo chmod 777 /src
           cd /src/openwrt/
