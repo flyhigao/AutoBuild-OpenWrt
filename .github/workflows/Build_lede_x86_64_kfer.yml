@@ -10,8 +10,8 @@
 name: OpenWrt-CI
 
 on:
-  schedule:
-    - cron: 0 20 * * *
+  #schedule:
+  #  - cron: 0 20 * * *
     
   watch:
     types: [started]
@@ -34,7 +34,10 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          mkdir /src/openwrt/package -p
+          
+          sudo mkdir /src/openwrt/package -p
+          sudo chmod 777 /src/openwrt/
+          sudo chmod 777 /src
           cd /src/openwrt/
           #install openclash
           git clone https://github.com/vernesong/OpenClash.git package/luci-app-openclash
@@ -54,6 +57,7 @@ jobs:
           ##git clone the kfermercer code to current dir --flyhi
           sudo mkdir /src/openwrt -p
           sudo chmod 777 /src/openwrt 
+          sudo chmod 777 /src
           cd /src/openwrt/
           git clone --depth 1 https://github.com/KFERMercer/OpenWrt.git -b master .
 
