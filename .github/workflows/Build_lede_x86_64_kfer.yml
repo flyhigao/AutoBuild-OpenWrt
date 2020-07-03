@@ -89,6 +89,9 @@ jobs:
           cd /src
           chmod 777 /src/$CUSTOM_FILE && ./$CUSTOM_FILE
           cd /src/openwrt && make defconfig
+          
+          #some makefile is wrong
+          sed -i 's/\+wol//' package/feeds/luci/luci-app-wol/Makefile
 
       - name: Make download
         working-directory: /src/openwrt
