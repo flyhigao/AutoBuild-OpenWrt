@@ -19,8 +19,8 @@ on:
   #schedule:
   #  - cron: 0 8 * * 5
   
-  #watch:
-  #  types: [started]
+  watch:
+    types: [started]
 
 jobs:
   build:
@@ -64,8 +64,8 @@ jobs:
         REPO_BRANCH: dev-19.07
       run: |
         git clone  $REPO_URL -b $REPO_BRANCH openwrt
-        cd openwrt
-        git checkout b68a89518bebdca5d5ff400d870ef1fc1e059815
+        #cd openwrt
+        #git checkout b68a89518bebdca5d5ff400d870ef1fc1e059815
 
     - name: Update & Install feeds
       working-directory: ./openwrt
@@ -74,7 +74,7 @@ jobs:
         #echo -e '\nsrc-git custom https://github.com/k-szuster/luci-access-control-package.git' >> feeds.conf
         #cat feeds.conf
         #echo 'start feeds update custom'
-        ./scripts/feeds update custom 
+        #./scripts/feeds update custom 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         # Add other app
