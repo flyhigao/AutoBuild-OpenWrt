@@ -86,7 +86,7 @@ jobs:
         mkdir -p package/luci-lib-docker && \
         wget https://raw.githubusercontent.com/lisaac/luci-lib-docker/master/collections/luci-lib-docker/Makefile -O package/luci-lib-docker/Makefile
         mkdir -p package/luci-app-dockerman && \
-        wget https://raw.githubusercontent.com/lisaac/luci-app-dockerman/master/Makefile -O package/luci-app-dockerman/Makefile
+        wget https://raw.githubusercontent.com/lisaac/luci-app-dockerman/master/applications/luci-app-dockerman/Makefile -O package/luci-app-dockerman/Makefile
         #compile package only
         #make package/luci-lib-jsonc/compile V=99
         #make package/luci-lib-docker/compile v=99
