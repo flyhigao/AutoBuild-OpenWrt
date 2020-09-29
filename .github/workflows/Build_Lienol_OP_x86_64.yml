@@ -79,6 +79,9 @@ jobs:
         ./scripts/feeds install -a
         # Add other app
         # git clone https://github.com/ozon/luci-app-ttyd.git package/feeds/luci-app-ttyd
+        
+        # add serverchan
+        git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
     
     - name: add docker support
       working-directory: ./openwrt
