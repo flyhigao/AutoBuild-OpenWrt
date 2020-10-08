@@ -79,9 +79,10 @@ jobs:
           CONFIG_FILE: 'lede_x86_64_kfer.config'
           CUSTOM_FILE: 'customize.sh'
         run: |
-          #cp ./makeconfig.d/x86_64.config ./.config
+          ##flyhi temp 
+          cp ./makeconfig.d/x86_64.config /src/openwrt/.config
           #make defconfig
-          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE /src/openwrt/.config
+          #flyhi temp [ -e $CONFIG_FILE ] && mv $CONFIG_FILE /src/openwrt/.config
           [ -e $CUSTOM_FILE ] && mv $CUSTOM_FILE /src/
           cat /src/openwrt/.config
           cat /src/$CUSTOM_FILE
@@ -91,7 +92,7 @@ jobs:
           cd /src/openwrt && make defconfig
           
           #some makefile is wrong
-          sed -i 's/\+wol//' package/feeds/luci/luci-app-wol/Makefile
+          #flyhi tempsed -i 's/\+wol//' package/feeds/luci/luci-app-wol/Makefile
 
       - name: Make download
         working-directory: /src/openwrt
