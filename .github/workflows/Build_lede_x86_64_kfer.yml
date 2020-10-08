@@ -80,7 +80,7 @@ jobs:
           CUSTOM_FILE: 'customize.sh'
         run: |
           ##flyhi temp 
-          cp ./makeconfig.d/x86_64.config /src/openwrt/.config
+          cp /src/openwrt/makeconfig.d/x86_64.config /src/openwrt/.config -rf
           #make defconfig
           #flyhi temp [ -e $CONFIG_FILE ] && mv $CONFIG_FILE /src/openwrt/.config
           [ -e $CUSTOM_FILE ] && mv $CUSTOM_FILE /src/
