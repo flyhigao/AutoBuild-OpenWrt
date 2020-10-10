@@ -73,6 +73,10 @@ jobs:
           pushd package/luci-app-openclash/luci-app-openclash/tools/po2lmo
           make && sudo make install
           popd
+          
+          #install serverchan
+          git clone https://github.com/tty228/luci-app-serverchan.git package/luci-app-serverchan
+
 
       - name: Generate configuration file
         env:
