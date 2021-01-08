@@ -84,13 +84,12 @@ jobs:
           CUSTOM_FILE: 'customize.sh'
         run: |
           ##flyhi temp 
-          cp /src/openwrt/makeconfig.d/x86_64.config /src/openwrt/.config -rf
+          #cp /src/openwrt/makeconfig.d/x86_64.config /src/openwrt/.config -rf
           #make defconfig
-          #flyhi temp [ -e $CONFIG_FILE ] && mv $CONFIG_FILE /src/openwrt/.config
+          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE /src/openwrt/.config
           [ -e $CUSTOM_FILE ] && mv $CUSTOM_FILE /src/
           cat /src/openwrt/.config
-          cat /src/$CUSTOM_FILE
-          
+                    
           cd /src
           chmod 777 /src/$CUSTOM_FILE && ./$CUSTOM_FILE
           cd /src/openwrt && make defconfig
